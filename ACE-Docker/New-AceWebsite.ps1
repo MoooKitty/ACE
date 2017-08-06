@@ -16,11 +16,7 @@ function New-AceWebsite
 
         [Parameter(Mandatory)]
         [string]
-        $RabbitMQPassword,
-
-        [Parameter()]
-        [string]
-        $EncryptionPassphrase = 'P@ssw0rd!'
+        $RabbitMQPassword
     )
 
     Set-Location $DockerPath
@@ -30,7 +26,7 @@ function New-AceWebsite
     #$AppSettings.RabbitMQServer = $RabbitMQServer
     $AppSettings.RabbitMQUserName = $RabbitMQUserName
     $AppSettings.RabbitMQPassword = $RabbitMQPassword
-    $AppSettings.EncryptionPassphrase = $EncryptionPassphrase
+    $AppSettings.EncryptionPassphrase = ([Guid]::NewGuid().Guid)
     $AppSettings | ConvertTo-Json | Out-File "$($DockerPath)\ACEWebService\appsettings.Production.json"
 
     docker build -t ace/iis-aspnetcore -f "$($DockerPath)\dockerfile" .
