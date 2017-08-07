@@ -24,15 +24,15 @@ Each of the services can be deployed on separate machines, or all on a single se
 
 The ACE repository includes a collection of PowerShell scripts to interact with the ACE Web Service, including adding users, managing credentials, uploading collection scripts, and scheduling scans. 
 
-After deploying the ACE servers, use New-ACEUser to create a new ACE user.
+After deploying the ACE servers, use **New-AceUser** to create a new ACE user.
 
-Remove the default “Admin” user with Remove-ACEUser.
+Remove the default “Admin” user with **Remove-AceUser**.
 
-Use New-ACECredential to enter a set of credentials.
+Use **New-AceCredential** to enter a set of credentials.
 
-Run Start-ACEDiscovery to automatically find computers on the Windows domain.
+Run **Start-AceDiscovery** to automatically find computers on the Windows domain.
 
-Run Start-ACESweep to start a sweep to run the selected scripts across the discovered endpoints.
+Run **Start-AceSweep** to start a sweep to run the selected scripts across the discovered endpoints.
 
 ## How do I add scripts to ACE?
 ACE Scripts should be self-contained scripts to collect data. They should return JSON object with the data to be collected. You can use ConvertTo-JsonV2 cmdlet in ACE to convert PSObjects into JSON objects in a PowerShell V2 compatible way.
@@ -52,7 +52,4 @@ The included collection scripts are designed to be PowerShell V2+ and Python 2.7
 * [ACE BlackHat Arsenal slides](https://www.slideshare.net/JaredAtkinson/automated-collection-and-enrichment-ace)
 
 Contributing
-Contributions to ACE are always welcome. 
-[contributing guidelines…]
-License
-ACE uses BSD-licensed components and is itself licensed under the BSD license. We support free and open sourced tools wherever possible and encourage the promotion of open-source tools to advance the security research community.
+Contributions to ACE are always welcome.
