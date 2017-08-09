@@ -1,0 +1,33 @@
+version: '2.1'
+services:
+  ace-rabbitmq:
+    build:
+      context: ./rabbitmq
+    container_name: ace-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=user 
+      - RABBITMQ_DEFAULT_PASS=P@ssw0rd!
+    networks:
+      ace:
+        aliases: 
+          - rabbitmq
+    ports: 
+      - 5672:5672
+      - 15672:15672
+  ace-sql:
+    build:
+      context: ./mssql-server-linux
+    container_name: ace-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd!
+    networks:
+      ace:
+        aliases: 
+         - sql
+    ports: 
+      - 1433:1433
+
+networks:
+  ace:
+    driver: bridge
