@@ -921,7 +921,7 @@ function Get-NetworkConnection {
     {
         $NTVersion = [System.Environment]::OSVersion.Version
 
-        if($NTVersion.Major -ge 6 -and $NTVersion.Minor -ge 1)
+        if($NTVersion.Major -gt 6 -or ($NTVersion.Major -ge 6 -and $NTVersion.Minor -ge 1))
         {
             # Based off of https://wj32.org/wp/2010/03/30/howto-use-i_querytaginformation/
             $ServiceTagQuery = [Activator]::CreateInstance($SC_SERVICE_TAG_QUERY)   # New-Object doesn't work on PSv2 for some reason.  Thanks @mattifestation! 
